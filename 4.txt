@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>LabProgram 4</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <script>
+ var app = angular.module("myapp",[]);
+ app.controller("mycntrl",function($scope){
+ $scope.num=0
+ $scope.result=0
+ $scope.sqres=0
+ $scope.factiorial=function(){
+ if($scope.num==0)
+ $scope.result = 1
+ else{
+ $scope.fact=1
+ for(var i = 1;i<=$scope.num;i++)
+ $scope.fact = $scope.fact*i
+ $scope.result=$scope.fact
+ }
+ }
+ $scope.square=function(){
+ $scope.sqres=$scope.num*$scope.num
+ }
+ });
+ </script>
+</head>
+<body ng-app="myapp">
+ <div ng-controller="mycntrl">
+ Enter the Number : <input type="number" ng-model="num">
+ <br>
+ <button ng-click="factiorial()">Factorial</button>
+ <br>
+ Factorial of {{num}} is {{result}}.
+ <br><br>
+ <button ng-click="square()">Square</button>
+ <br>
+ Square of {{num}} is {{sqres}}.
+ </div>
+</body>
+</html>

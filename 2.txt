@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>LabProgram 2</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <script>
+ var app = angular.module("myapp",[]);
+ app.controller("mycntrl",function($scope){
+ $scope.shoppingitems = ['Eggs','Bread','Milk','Curd']
+ $scope.additem = function(){
+ if($scope.newitem && $scope.shoppingitems.indexOf($scope.newitem)==-1)
+ {
+ $scope.shoppingitems.push($scope.newitem)
+ $scope.newitem = " "
+ }
+ else
+ {
+ if(scope.newitem)
+ alert("This item is already there in the Shopping List")
+ else
+ alert("Please enter an item to add !")
+ }
+ }
+ $scope.removeitem = function(){
+ if($scope.shoppingitems.indexOf($scope.selectitem)==-1)
+ alert("Please Select an item to remove.")
+ else
+ {
+ var x = $scope.shoppingitems.indexOf($scope.selectitem)
+ $scope.shoppingitems.splice(x,1)
+ $scope.selectitem = " "
+ }
+ }
+ });
+ </script>
+</head>
+<body ng-app="myapp">
+ <h1> Shopping List App</h1>
+ <div ng-controller="mycntrl">
+ <ul>
+ <li ng-repeat="item in shoppingitems">{{item}}</li>
+ </ul><br>
+ Enter a item to add : <input type="text" ng-model="newitem">&nbsp;&nbsp;
+ <button ng-click="additem()">Add Item</button>
+ <br>
+ Select an Item to Remove : <select ng-model="selectitem" ng-options="item for item in
+shoppingitems"></select>&nbsp;&nbsp; <button ng-click="removeitem()">Remove
+Item</button>
+ </div>
+</body>
+</html>
